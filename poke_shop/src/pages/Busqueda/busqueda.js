@@ -1,39 +1,25 @@
-import React,{Fragment, useState} from 'react';
-import Axios from 'axios';
-import VerImage from '../../atomics/verimg';
+import React from 'react';
+//Hooks
 import use_fetch from '../../hooks/use_fetch'
+//Paths
 import pokemones from '../../paths/pokemones'
-import axios from 'axios';
+//Components
+import BusquedaHead from '../../components/busquedaHead/busquedaHead';
+import BusquedaBody from '../../components/busquedaHead/busquedaBody';
 
 const Busqueda = () =>{
     var pokemons = new Array();
-    const cantidad = 100;
+    const cantidad = 200;
 
     for(let i=1;i<=cantidad;i++){
-        const [pokemon] = use_fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+        const [pokemon] = use_fetch(pokemones.getTodos.concat(`${i}`));
         pokemons.push(pokemon);
     }
     
     return(
         <div className="container fondo2">
-            <div className="row">
-                {pokemons.map((item,i) =>{
-                    const {name,abilities,sprites,game_indices} = item;
-                    return(
-                        <Fragment>
-                            <div key={i} className="col-6 p-2">
-                                <div class="card">
-                                    <img src={sprites.front_default} className="card-img-top" alt="..."/>
-                                    <div className="card-body">
-                                        <h5 className="card-title">{name}</h5>
-                                        <a href="#" className="btn btn-primary">Ver+</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </Fragment>
-                    )
-                })}
-            </div>
+            <BusquedaHead/>
+            <BusquedaBody pokemons={pokemons}/>
         </div>
     )
 }
