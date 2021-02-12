@@ -1,25 +1,14 @@
-import React from 'react';
-//Hooks
-import use_fetch from '../../hooks/use_fetch'
-//Paths
-import pokemones from '../../paths/pokemones'
+import React, { useState } from 'react';
 //Components
-import BusquedaHead from '../../components/busquedaHead/busquedaHead';
-import BusquedaBody from '../../components/busquedaHead/busquedaBody';
+import BusquedaHead from '../../components/busquedaHead';
+import BusquedaBody from '../../components/busquedaBody';
 
-const Busqueda = () =>{
-    var pokemons = new Array();
-    const cantidad = 200;
-
-    for(let i=1;i<=cantidad;i++){
-        const [pokemon] = use_fetch(pokemones.getTodos.concat(`${i}`));
-        pokemons.push(pokemon);
-    }
-    
+const Busqueda = ({paquete}) =>{
+    const[entrada,setEntrada] = useState('');
     return(
         <div className="container fondo2">
-            <BusquedaHead/>
-            <BusquedaBody pokemons={pokemons}/>
+            <BusquedaHead entrada={entrada} setEntrada={setEntrada} paquete={paquete}/>
+            <BusquedaBody paquete={paquete} entrada={entrada}/>
         </div>
     )
 }

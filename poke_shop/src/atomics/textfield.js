@@ -1,19 +1,21 @@
 import React,{Fragment} from 'react';
 
 const TextField = ({
-    name,
-    value,
+    id,
     className,
-    onChange
+    name,
+    handler,
+    filtrado
 }) => {
     return(
         <Fragment>
             <input 
                 type="text"
-                name={name}
-                value={value}
                 className={className}
-                onChange={onChange}
+                id={id}
+                name={name}
+                onChange={handler}
+                onKeyUp={filtrado}
             />
         </Fragment>
     )

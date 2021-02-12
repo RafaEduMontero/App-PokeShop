@@ -1,11 +1,11 @@
-import React,{Fragment} from 'react';
+import React from 'react';
 
-const IconSearch = () =>{
+const IconSearch = ({filtrado}) =>{
     return(
         <span className="input-group-btn">
-            <button className="btn btn-default">
+            <button onClick={filtrado} className="btn btn-info">
             <i className="text-white fas fa-search"></i>
-            s</button>
+            </button>
         </span>
     )
 }
