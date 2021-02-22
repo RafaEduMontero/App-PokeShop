@@ -63,3 +63,9 @@ button-form{
 .forgot a{
     color: white;
 }
+
+.fixed-link{
+    position: sticky;
+    z-index: 10;
+    bottom: 0;
+}

@@ -47,3 +47,35 @@ const CardField = ({pokemon,i,paquete}) =>{
 }
 
 export default CardField;
+
+// `<div class="col p-4">
+//                 <div class="card2">
+//                     <img src=${fondoHeader} class="card1-header"/>
+//                     <div class="card1-body">
+//                         <img class="card2-body-img" alt="${name}" src="${image}"/>
+//                         <h1 class="card1-body-title">
+//                             ${primeraMayuscula(name)}
+//                             <span>${hp}</span>
+//                         </h1>
+//                         <span>Habilidad: ${habilidad}</span>
+//                     </div>
+//                     <div class="card1-footer">
+//                         <div class="card1-footer-social">
+//                             <h3>${tipo}</h3>
+//                             <p>Tipo</p>
+//                         </div>
+//                         <div class="card1-footer-social">
+//                         <h3>${ataque}</h3>
+//                         <p>Ataque</p>
+//                         </div>
+//                         <div class="card1-footer-social">
+//                             <h3>${defensa}</h3>
+//                             <p>Defensa</p>
+//                         </div>
+//                         <div class="card1-footer-social">
+//                             <h3>${especial}</h3>
+//                             <p>Especial</p>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>`

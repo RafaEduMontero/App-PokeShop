@@ -7,7 +7,7 @@ const Carrito = ({paquete}) =>{
     const {tamaño} = paquete;
     let display;
     if(tamaño !==0){
-        display = "btn btn-danger";
+        display = "btn btn-success";
     }else{
         display = "d-none"
     }
@@ -16,6 +16,7 @@ const Carrito = ({paquete}) =>{
             <div className="container fondo3">            
                 <Cart paquete={paquete}/>
                 <Link className={display} to="/formulario">Comprar</Link>
+                <div className="pt-2"></div>
             </div>
         </Fragment>
     )

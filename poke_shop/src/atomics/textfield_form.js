@@ -4,7 +4,8 @@ const TextFieldForm = ({
     type,
     name,
     placeholder,
-    onChange
+    onChange,
+    value
 }) =>{
     return(
         <input
@@ -13,6 +14,7 @@ const TextFieldForm = ({
             placeholder={placeholder}
             className="form-control"
             onChange={onChange}
+            value={value}
         />
     )
 }
