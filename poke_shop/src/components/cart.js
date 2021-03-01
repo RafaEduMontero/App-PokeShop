@@ -9,7 +9,7 @@ const Cart = ({paquete}) =>{
     const{cart,tamaño} = paquete;
     return(
         <Fragment>
-            {cart.length === 0 ? (<CartVacio/>) : (cart.map((pokemon) =>{
+            {tamaño === 0 ? (<CartVacio/>) : (cart.map((pokemon) =>{
                 return(
                     <Fragment>
                         <CardFieldCart pokemon={pokemon} paquete={paquete} />

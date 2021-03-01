@@ -111,6 +111,7 @@ const Form = ({cart}) => {
                     console.log(datos)
                         console.log("SUCCESS!", response.status, response.text);
                         swal({
+                            title: '¡PokéBola Enviada! :D',
                             text: '¡¡Su Pokébola fué enviada a su mail. Gracias por elegirnos, Poke-Shop!!',
                             icon: 'success',
                             button: 'OK'

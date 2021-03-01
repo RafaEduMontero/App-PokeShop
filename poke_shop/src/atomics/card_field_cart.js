@@ -11,11 +11,11 @@ import SpanField from './span_field';
 import IconBack from './iconBack';
 //funciones
 import funciones from '../functions/funciones';
-import swal from 'sweetalert';
+
 
 const CardFieldCart = ({pokemon,paquete}) =>{
 
-    const {delPokemon,primeraMayuscula} = funciones;
+    const {mostrarAlert,primeraMayuscula} = funciones;
     
     const {name,abilities,sprites,id} = pokemon;
     const datos = {
@@ -24,23 +24,6 @@ const CardFieldCart = ({pokemon,paquete}) =>{
         habilidad: abilities[0].ability.name,
     }
     const {imagen,nombre,habilidad} = datos;
-
-    const mostrarAlert = () =>{
-        swal({
-            title: 'Eliminar',
-            text: `¿Está seguro de eliminar a ${primeraMayuscula(nombre)}?`,
-            icon: 'warning',
-            buttons: ["No","Si"]
-        }).then(respuesta =>{
-            if(respuesta){
-                delPokemon(pokemon.id,paquete);
-                swal({
-                    text: `¡${primeraMayuscula(nombre)} fué Elimina con Éxito!`,
-                    icon: 'success'
-                })
-            }
-        })
-    }
 
     return(
         <Fragment>
@@ -59,7 +42,7 @@ const CardFieldCart = ({pokemon,paquete}) =>{
                             <Link className="card1-footer btn btn-info p-2 pb-2" to={`/busqueda/detallebusqueda/${pokemon.id}`}><i className="fas fa-info-circle pb-1"></i></Link>
                         </div>
                         <div className="col-3">
-                            <ButtonSend label={<IconDeleteCart/>} onClick={() => mostrarAlert()} className="btn btn-danger"/>
+                            <ButtonSend label={<IconDeleteCart/>} onClick={() => mostrarAlert(nombre,pokemon.id,paquete)} className="btn btn-danger"/>
                         </div>
                         <div className="col-3">
                             <Link className="btn btn-info" to="/busqueda"><IconBack/></Link>

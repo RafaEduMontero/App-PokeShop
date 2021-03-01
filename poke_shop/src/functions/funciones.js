@@ -1,3 +1,4 @@
+import swal from 'sweetalert';
 let timeOutID;
 
 const funciones = {
@@ -36,6 +37,24 @@ const funciones = {
             })
             setPokemonsFiltrados(pokemonsFiltrado);
         }, 500);
+    },
+    mostrarAlert: (nombre,id,paquete) =>{
+        const {primeraMayuscula,delPokemon} = funciones;
+        swal({
+            title: 'Eliminar',
+            text: `¿Está seguro de eliminar a ${primeraMayuscula(nombre)}?`,
+            icon: 'warning',
+            buttons: ["No","Si"],
+            dangerMode: true
+        }).then(respuesta =>{
+            if(respuesta){
+                delPokemon(id,paquete);
+                swal({
+                    text: `¡${primeraMayuscula(nombre)} fué Eliminado con Éxito!`,
+                    icon: 'success'
+                })
+            }
+        })
     }
 }
 
