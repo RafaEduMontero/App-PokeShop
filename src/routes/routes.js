@@ -20,7 +20,7 @@ const Routes = () =>{
 
     const [pokemons] = use_fetch();
     
-    const [cart,setCart] = useState(new Array());
+    const [cart,setCart] = useState([]);
 
     const [loading,setLoading] = useState(false)
 

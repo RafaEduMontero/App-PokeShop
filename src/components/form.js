@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 //Atomics
 import TextFieldForm from '../atomics/textfield_form';
 import IconBack from '../atomics/iconBack';
@@ -17,11 +17,11 @@ import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 
 const Form = ({cart}) => {
-    const{flex,card2,card1_header,
+    const{card2,card1_header,
         card1_body,card1_body_img,
         card1_body_span,card1_body_title,
         card1_footer,card1_footer_social,
-        card1_footer_social_p,col_3} = estilos_card_email;
+        card1_footer_social_p} = estilos_card_email;
 
         let history = useHistory();
 
@@ -92,7 +92,7 @@ const Form = ({cart}) => {
     const handleSubmit = e =>{
 	    e.preventDefault();
         setActivo(true)
-        if(username == ''){
+        if(username === ''){
             swal({
                 text: 'Por favor ingrese un nombre',
                 icon: 'warning'
@@ -100,7 +100,7 @@ const Form = ({cart}) => {
             setActivo(false)
             setIsInvalid('is-invalid')
         }else{
-            if(email == ''){
+            if(email === ''){
                 swal({
                     text: 'Por Favor ingrese un email',
                     icon: 'warning'

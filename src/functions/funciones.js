@@ -9,7 +9,7 @@ const funciones = {
     },
     delPokemon: (id, paquete) => {
         const { cart, setCart } = paquete;
-        const pokemon = cart.filter(pokemon => pokemon.id != id);
+        const pokemon = cart.filter(pokemon => pokemon.id !== id);
         setCart(pokemon)
     },
     primeraMayuscula: (name) => {

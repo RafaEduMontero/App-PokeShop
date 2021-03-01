@@ -17,7 +17,7 @@ const BusquedaBody = ({paquete,entrada}) =>{
     const offset = currentPage * PER_PAGE;
     let currentPagePokemons = arrayPokemons;
 
-    const mostrarNoEncontrado = entrada != '' && !loading && arrayPokemons.length == 0 ;
+    const mostrarNoEncontrado = entrada !== '' && !loading && arrayPokemons.length === 0 ;
 
     if(mostrarNoEncontrado){
         return(
@@ -25,21 +25,17 @@ const BusquedaBody = ({paquete,entrada}) =>{
         )
     }
 
-    if(arrayPokemons.length == 0){
+    if(arrayPokemons.length === 0){
         return(
             <Spinner/>
         )
     }
-    // if(arrayPokemons.length !=0){
-    //     {entrada === '' && <Spinner/>}
-        currentPagePokemons = arrayPokemons.slice(offset, offset + PER_PAGE).map((pokemon,i) =>{
-            return(
-                <CardField key={i} pokemon={pokemon} i={i} paquete={paquete}/>
-            )
-        })
-    // }else{
-    //     {entrada !== '' ? <PokeNoEncontrado/>}
-    // }
+
+    currentPagePokemons = arrayPokemons.slice(offset, offset + PER_PAGE).map((pokemon,i) =>{
+        return(
+             <CardField key={i} pokemon={pokemon} i={i} paquete={paquete}/>
+        )
+    })
 
     const pageCount = Math.ceil(arrayPokemons.length / PER_PAGE);
 
