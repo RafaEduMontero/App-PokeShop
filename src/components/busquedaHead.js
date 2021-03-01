@@ -4,6 +4,7 @@ import TextField from '../atomics/textfield';
 import IconCart from '../atomics/iconCart';
 //react-router
 import {Link} from 'react-router-dom';
+//funtions
 import funciones from '../functions/funciones';
 
 const BusquedaHead = ({setEntrada,entrada,paquete}) =>{

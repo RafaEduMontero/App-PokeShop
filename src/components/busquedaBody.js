@@ -1,7 +1,7 @@
 import React,{Fragment,useState} from 'react';
 //react-Paginate
 import ReactPaginate from 'react-paginate';
-//Components
+//Atomics
 import CardField from '../atomics/card_field';
 import PokeNoEncontrado from '../atomics/poke_no_encontrado';
 import Spinner from '../atomics/spinner';

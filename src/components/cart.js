@@ -1,7 +1,6 @@
 import React,{Fragment} from 'react';
 //Atomics
 import CardFieldCart from '../atomics/card_field_cart';
-//react-router
 import CartVacio from '../atomics/cartVacio';
 
 

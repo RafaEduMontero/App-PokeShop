@@ -1,16 +1,19 @@
 import React, { Fragment, useState, useEffect } from 'react';
 //Atomics
 import TextFieldForm from '../atomics/textfield_form';
+import IconBack from '../atomics/iconBack';
 //Images
 import form from '../images/pokebolas.jpg';
 //Emailjs
 import * as emailjs from 'emailjs-com';
 //Functions
 import funciones from '../functions/funciones';
-import { Link } from 'react-router-dom';
-import IconBack from '../atomics/iconBack';
+//Styles
 import estilos_card_email from "../styles/estilos_card_email";
+//react-router
 import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
+//sweetalert
 import swal from 'sweetalert';
 
 const Form = ({cart}) => {

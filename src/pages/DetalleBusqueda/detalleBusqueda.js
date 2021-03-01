@@ -17,7 +17,7 @@ const DetalleBusqueda = ({paquete}) =>{
     const [pokemon,validate] = use_fetch(pokemones.getTodos+`${id}`);
     return(
         <Fragment>
-            <div className="fondo2 container">
+            <div className="fondo2 container-fluid">
                 <div className="row fixed-head justify-content-end">
                     <Link className="btn btn-primary" to="/carrito"><IconCart paquete={paquete}/></Link>
                 </div>
