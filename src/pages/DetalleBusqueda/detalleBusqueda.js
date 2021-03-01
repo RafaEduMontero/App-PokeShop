@@ -18,7 +18,7 @@ const DetalleBusqueda = ({paquete}) =>{
     return(
         <Fragment>
             <div className="fondo2 container-fluid">
-                <div className="row fixed-head justify-content-end">
+                <div className="row fixed-head justify-content-end p-2">
                     <Link className="btn btn-primary" to="/carrito"><IconCart paquete={paquete}/></Link>
                 </div>
                 <div className="row justify-content-center">
