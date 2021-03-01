@@ -16,6 +16,7 @@ import funciones from '../functions/funciones';
 const DetalleBusquedaField = ({pokemon,paquete}) =>{
     
     const{primeraMayuscula,addPokemon} = funciones;
+    const{cart} = paquete;
 
     const datos={
         imagen : pokemon.sprites.other.dream_world.front_default,
@@ -31,7 +32,7 @@ const DetalleBusquedaField = ({pokemon,paquete}) =>{
     const {imagen,name,habilidad,hp,tipo,defensa,especial,ataque} = datos;
     return(
         <Fragment>
-            <div className="col p-4">
+            <div className="col col-md-4 p-4">
                 <div className="card2">
                     <img src={fondoHeader} className="card1-header"/>
                     <div className="card1-body">
@@ -65,7 +66,8 @@ const DetalleBusquedaField = ({pokemon,paquete}) =>{
                             <Link className="btn btn-info" to="/busqueda"><IconBack/></Link>
                         </div>
                         <div className="col-6">
-                            <ButtonSend label={<IconAddCart/>} onClick={() => addPokemon(pokemon.id,paquete)} className="btn btn-success"/>
+                                {cart.find(poke =>poke.id === pokemon.id) && <ButtonSend label={<IconAddCart/>} onClick={() => addPokemon(pokemon.id,paquete)} className="btn btn-dark" disabled/>}
+                                {!(cart.find(poke =>poke.id === pokemon.id)) && <ButtonSend label={<IconAddCart/>} onClick={() => addPokemon(pokemon.id,paquete)} className="btn btn-success"/>}
                         </div>
                     </div>
                 </div>

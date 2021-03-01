@@ -3,22 +3,43 @@ import React,{Fragment,useState} from 'react';
 import ReactPaginate from 'react-paginate';
 //Components
 import CardField from '../atomics/card_field';
+import PokeNoEncontrado from '../atomics/poke_no_encontrado';
+import Spinner from '../atomics/spinner';
 
 const BusquedaBody = ({paquete,entrada}) =>{
-    const {pokemonsFiltrados,pokemons} = paquete;
+    const {pokemonsFiltrados,pokemons,loading} = paquete;
     
     const [currentPage,setCurrentPage] = useState(0);
 
     const arrayPokemons = entrada === '' ? pokemons : pokemonsFiltrados
 
-    const PER_PAGE = 10;
+    const PER_PAGE = 12;
     const offset = currentPage * PER_PAGE;
+    let currentPagePokemons = arrayPokemons;
 
-    const currentPagePokemons = arrayPokemons.slice(offset, offset + PER_PAGE).map((pokemon,i) =>{
+    const mostrarNoEncontrado = entrada != '' && !loading && arrayPokemons.length == 0 ;
+
+    if(mostrarNoEncontrado){
         return(
-            <CardField key={i} pokemon={pokemon} i={i} paquete={paquete}/>
+            <PokeNoEncontrado/>
         )
-    })
+    }
+
+    if(arrayPokemons.length == 0){
+        return(
+            <Spinner/>
+        )
+    }
+    // if(arrayPokemons.length !=0){
+    //     {entrada === '' && <Spinner/>}
+        currentPagePokemons = arrayPokemons.slice(offset, offset + PER_PAGE).map((pokemon,i) =>{
+            return(
+                <CardField key={i} pokemon={pokemon} i={i} paquete={paquete}/>
+            )
+        })
+    // }else{
+    //     {entrada !== '' ? <PokeNoEncontrado/>}
+    // }
 
     const pageCount = Math.ceil(arrayPokemons.length / PER_PAGE);
 

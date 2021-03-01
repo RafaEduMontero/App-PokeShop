@@ -17,12 +17,11 @@ const BusquedaHead = ({setEntrada,entrada,paquete}) =>{
     }
     return(
         <div className="row fixed-head pb-2">
-                    <div className="input-group mt-2">
-                            <div className="col-8">
+                    <div className="input-group mt-2 col-12">
+                            <div className="col-8 mr-auto">
                                 <TextField filtrado={() => filtrado(entrada,paquete)} handler={handler} name="entrada" className="form-control text-white bg-info" id="formulario"/>
                             </div>
-                            <div className="col-1"></div>
-                            <div className="col-1">
+                            <div className="ml-auto">
                                 <Link to="/carrito" className="btn btn-primary"><IconCart paquete={paquete}/></Link>
                             </div>                                           
                     </div>

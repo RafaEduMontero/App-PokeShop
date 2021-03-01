@@ -5,7 +5,7 @@ import LinkTo from '../../atomics/linkto';
 
 const Principal = () =>{
     return(
-        <div className="container fondo">
+        <div className="container-fluid fondo">
             <LinkTo className="btn btn-danger p-3 botonEntrar" label="ENTRAR" to="/busqueda"/>
         </div>
     )

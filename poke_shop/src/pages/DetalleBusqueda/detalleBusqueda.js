@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 //Atomics
 import DetalleBusquedaField from '../../atomics/detailBusqueda_field';
 import IconCart from '../../atomics/iconCart';
+import Spinner from '../../atomics/spinner';
 //Hoooks
 import use_fetch from '../../hooks/use_fetch_byId';
 //Paths
@@ -17,10 +18,12 @@ const DetalleBusqueda = ({paquete}) =>{
     return(
         <Fragment>
             <div className="fondo2 container">
-                <div className="row justify-content-end">
+                <div className="row fixed-head justify-content-end">
                     <Link className="btn btn-primary" to="/carrito"><IconCart paquete={paquete}/></Link>
                 </div>
-                {validate?(<DetalleBusquedaField paquete={paquete} pokemon={pokemon} id={id}/>):(<h3>Loading...</h3>)}
+                <div className="row justify-content-center">
+                    {validate?(<DetalleBusquedaField paquete={paquete} pokemon={pokemon} id={id}/>):(<Spinner/>)}
+                </div>
             </div>            
         </Fragment>
     )

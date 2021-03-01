@@ -4,14 +4,15 @@ import CardFieldCart from '../atomics/card_field_cart';
 //react-router
 import CartVacio from '../atomics/cartVacio';
 
+
 const Cart = ({paquete}) =>{
-    const{cart} = paquete;
+    const{cart,tamaño} = paquete;
     return(
         <Fragment>
-            {cart.length === 0 ? (<CartVacio/>) : (cart.map((pokemon,i) =>{
+            {cart.length === 0 ? (<CartVacio/>) : (cart.map((pokemon) =>{
                 return(
                     <Fragment>
-                        <CardFieldCart pokemon={pokemon} i={i} paquete={paquete} />
+                        <CardFieldCart pokemon={pokemon} paquete={paquete} />
                     </Fragment>
                 )
             }))}

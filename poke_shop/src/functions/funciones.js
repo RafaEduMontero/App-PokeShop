@@ -2,7 +2,7 @@ let timeOutID;
 
 const funciones = {
     addPokemon: (id, paquete) => {
-        const { cart, setCart, pokemons } = paquete;
+        const { cart, setCart, pokemons} = paquete;
         const pokemon = pokemons.filter((pokemon) => pokemon.id === id)
         setCart([...cart, ...pokemon]);
     },
@@ -15,6 +15,8 @@ const funciones = {
         return name[0].toUpperCase() + name.slice(1);
     },
     filtrado: (entrada, paquete) => {
+        const { pokemons,setPokemonsFiltrados,setLoading } = paquete;
+        setLoading(true);
         // Al evento oninput del campo de búsqueda le asignamos esta función,
         // que será llamada cada vez que se presione una tecla,
         // y que filtra y muestra los usuarios que coinciden con la búsqueda, con un delay o debounce de 1seg.
@@ -25,9 +27,10 @@ const funciones = {
 
         // Demorar la ejecución de la búsqueda con la función setTimeOut(),
         // esta recibe dos parámetros, la función deberá ejecutar y el tiempo de espera en mili-segundos.
+        
         timeOutID = setTimeout(() => {
-            const { pokemons,setPokemonsFiltrados } = paquete;
             const pokemonsFiltrado = pokemons.filter((pokemon) => {
+                setLoading(false);
                 const resultado = pokemon.name.includes(entrada.entrada);
                 return resultado
             })

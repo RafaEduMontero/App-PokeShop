@@ -1,5 +1,4 @@
 import React,{Fragment } from 'react';
-import IconSend from '../atomics/iconSend';
 
 const style = 'btn btn-primary';
 const SPACE = ' ';
@@ -7,11 +6,13 @@ const SPACE = ' ';
 const ButtonSend = ({
     className,
     onClick,
-    label
+    label,
+    disabled
 }) =>{
     return(
         <Fragment>
-            <button 
+            <button
+                disabled={disabled} 
                 className={style + SPACE + className}
                 onClick={onClick}> {label}
             </button>

@@ -8,7 +8,6 @@
 .fondo{
     width: 100%;
     min-height: 100vh;
-    background-image: url(../images/fondo.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -29,11 +28,22 @@
 .fondo3{
   width: 100%;
   min-height: 100vh;
-  background-image: url(../images/pokebolas.jpg);
+  background-image: url(../images/fondo7.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.fondo4{
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(../images/fondo3.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  padding-top: 4rem;
 }
 
 .botonEntrar{
@@ -58,7 +68,6 @@
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
-    max-width: 320px;
     -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.315);
             box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.315);
   }
@@ -134,7 +143,6 @@
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
-    max-width: 400px;
     -webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.315);
             box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.315);
   }
@@ -145,4 +153,16 @@
     background-color: white;
     border-radius: 50%;
     margin-top: calc(-48px - 5px);
+  }
+
+  @media (max-width: 527px) {
+    .fondo {
+      background-image: url(../images/fondo.jpg);
+    }
+  }
+
+  @media (min-width: 527px) {
+    .fondo {
+      background-image: url(../images/fondo6.jpg);
+    }
   }

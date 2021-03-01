@@ -4,7 +4,9 @@ import Form from '../../components/form';
 
 const Formulario = ({cart}) =>{
     return(
-        <Form cart={cart}/>
+        <div className="fondo4">
+            <Form cart={cart}/>
+        </div>
     )
 }
 

@@ -22,13 +22,16 @@ const Routes = () =>{
     
     const [cart,setCart] = useState(new Array());
 
+    const [loading,setLoading] = useState(false)
+
     const paquete = {
         pokemonsFiltrados,
         setPokemonsFiltrados,
         pokemons,
         cart,
         setCart,
-        tamaño: cart.length
+        tamaño: cart.length,
+        loading,setLoading
     }
 
     return(

@@ -5,14 +5,15 @@ const TextFieldForm = ({
     name,
     placeholder,
     onChange,
-    value
+    value,
+    className
 }) =>{
     return(
         <input
             type={type}
             name={name}
             placeholder={placeholder}
-            className="form-control"
+            className={`form-control ${className}`}
             onChange={onChange}
             value={value}
         />
