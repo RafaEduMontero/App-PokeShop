@@ -110,9 +110,7 @@ const Form = ({cart}) => {
             }else{
                 setIsInvalid('');
                 emailjs.send('service_6sq906i','template_zyz2x9k', datos,'user_UruR9nFNkkkXSRvAD2kYZ')
-                .then((response) => {
-                    console.log(datos)
-                        console.log("SUCCESS!", response.status, response.text);
+                .then(() => {
                         swal({
                             title: '¡PokéBola Enviada! :D',
                             text: '¡¡Su Pokébola fué enviada a su mail. Gracias por elegirnos, Poke-Shop!!',
@@ -168,6 +166,3 @@ const Form = ({cart}) => {
 }
 
 export default Form;
-
-//contraseña 35FF720CE48FA6C00BB014B94D91ED86A564
-//servidor smtp.elasticemail.com
