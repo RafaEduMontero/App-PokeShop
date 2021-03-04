@@ -18,7 +18,8 @@ const FormField = ({handleSubmit,onSubmit,register,errors,activo}) =>{
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-group">
-                                <InputHookForm 
+                                <InputHookForm
+                                    type="text" 
                                     className="form-control" 
                                     name="username" 
                                     placeholder="Nombre" 
@@ -28,7 +29,8 @@ const FormField = ({handleSubmit,onSubmit,register,errors,activo}) =>{
                                     <SpanField contenido="El nombre es requerido" className="text-warning"/>}
                             </div>
                             <div className="form-group">
-                                <InputHookForm 
+                                <InputHookForm
+                                    type="email" 
                                     className="form-control" 
                                     name="email" 
                                     placeholder="Email" 

@@ -4,10 +4,12 @@ const InputHookForm = ({
     className,
     name,
     placeholder,
-    register
+    register,
+    type
 }) =>{
     return(
             <input 
+                type={type}
                 className={className} 
                 name={name} 
                 placeholder={placeholder} 
