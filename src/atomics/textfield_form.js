@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{Fragment} from 'react';
+import { useForm } from "react-hook-form";
 
 const TextFieldForm = ({
     type,
@@ -8,15 +9,25 @@ const TextFieldForm = ({
     value,
     className
 }) =>{
+    const { register,errors} = useForm();
     return(
-        <input
-            type={type}
-            name={name}
-            placeholder={placeholder}
-            className={`form-control ${className}`}
-            onChange={onChange}
-            value={value}
-        />
+        <Fragment>
+            <input
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                className={`form-control ${className}`}
+                onChange={onChange}
+                value={value}
+                ref={
+                    register({
+                        required: true,
+                        message: `Debe ingresar un ${name}`
+                    })
+                }
+            />
+            {errors.name && <p>This field is required</p>}
+        </Fragment>
     )
 }
 

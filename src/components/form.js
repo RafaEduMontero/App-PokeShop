@@ -1,40 +1,32 @@
-import React, { Fragment, useState } from 'react';
-//Atomics
-import TextFieldForm from '../atomics/textfield_form';
-import IconBack from '../atomics/iconBack';
-//Images
-import form from '../images/pokebolas.jpg';
-//Emailjs
-import * as emailjs from 'emailjs-com';
+import React, { useState,useEffect } from 'react';
 //Functions
 import funciones from '../functions/funciones';
 //Styles
 import estilos_card_email from "../styles/estilos_card_email";
-//react-router
 import { useHistory } from "react-router-dom";
-import { Link } from 'react-router-dom';
-//sweetalert
-import swal from 'sweetalert';
+//react-form-hook
+import { useForm } from "react-hook-form";
+//Atomics
+import FormField from '../atomics/form_field';
 
 const Form = ({cart}) => {
+    const { handleSubmit,register,errors} = useForm();
     const{card2,card1_header,
         card1_body,card1_body_img,
         card1_body_span,card1_body_title,
         card1_footer,card1_footer_social,
         card1_footer_social_p} = estilos_card_email;
 
-        let history = useHistory();
-
         const[activo,setActivo] = useState(false);
-        const[isInvalid,setIsInvalid] = useState('');
+
+        const {primeraMayuscula,enviarMail} = funciones;
 
     const [datos,setDatos] = useState({
         username: '',
         email: '',
         from_name: `PokéShop`,
         imagen: cart.map((pokemon,i) =>{
-            const {primeraMayuscula} = funciones;
-            const datos={
+            const datosPokemon={
                 name : pokemon.name,
                 habilidad: pokemon.abilities[0].ability.name,
                 hp: pokemon.stats[0].base_stat,
@@ -44,7 +36,7 @@ const Form = ({cart}) => {
                 tipo: pokemon.types[0].type.name
             }
         
-            const {name,habilidad,hp,tipo,defensa,especial,ataque} = datos;
+            const {name,habilidad,hp,tipo,defensa,especial,ataque} = datosPokemon;
             return(
                 `
                             <article style="${card2}">
@@ -79,89 +71,26 @@ const Form = ({cart}) => {
             )
         }).join(''),
     })
-    const handler = (e) =>{
-        const {name,value} = e.target;
-        setDatos({
-            ...datos,
-            [name] : value
-        })
-    }
 
-    const {username,email} = datos;
-
-    const handleSubmit = e =>{
-	    e.preventDefault();
-        setActivo(true)
-        if(username === ''){
-            swal({
-                text: 'Por favor ingrese un nombre',
-                icon: 'warning'
-            })
-            setActivo(false)
-            setIsInvalid('is-invalid')
-        }else{
-            if(email === ''){
-                swal({
-                    text: 'Por Favor ingrese un email',
-                    icon: 'warning'
-                })
-                setActivo(false)
-                setIsInvalid('is-invalid')
-            }else{
-                setIsInvalid('');
-                emailjs.send('service_6sq906i','template_zyz2x9k', datos,'user_UruR9nFNkkkXSRvAD2kYZ')
-                .then(() => {
-                        swal({
-                            title: '¡PokéBola Enviada! :D',
-                            text: '¡¡Su Pokébola fué enviada a su mail. Gracias por elegirnos, Poke-Shop!!',
-                            icon: 'success',
-                            button: 'OK'
-                        }).then(respuesta =>{
-                            if(respuesta){
-                                history.push("/busqueda");
-                                setActivo(false);
-                            }
-                        })
-                        setDatos({
-                            email: '',
-                            username: ''
-                        });
-		}, (err) => {
-				   console.log("FAILED...", err);
-		});
-            }
+    let history = useHistory();
+    useEffect(() =>{
+        if(datos.email !== '' && datos.username !== ''){
+            enviarMail(datos,setActivo,setDatos,history)
         }
-   }
+    },[datos])
+
+    const onSubmit = (data) =>{
+        setDatos({...datos,username: data.username,email: data.email});
+        setActivo(true)     
+            }
 
     return (
-        <Fragment>
-            <div className="modal-dialog text-center">
-                <div className="col-sm-8 main-section">
-                    <div className="modal-content">
-                        <div className="col-12 user-img">
-                            <img src={form} />
-                        </div>
-                        <form className="col-12">
-                            <div className="form-group" id="#user-group">
-                                <TextFieldForm onChange={handler} className={isInvalid} type="text" value={username} placeholder="Nombre y Apellido" name="username" />
-                            </div>
-                            <div className="form-group" id="#email-group">
-                                <TextFieldForm onChange={handler} className={isInvalid} type="email" value={email} placeholder="Email" name="email" />
-                            </div>
-                            <button className={`btn ${activo ? 'btn-dark' : 'btn-primary'}`} to="/busqueda" onClick={handleSubmit} disabled={activo}>Enviar pokebola</button>
-                        </form>
-                        <div className="row p-5">
-                            <div className="col-6">
-                                <Link to="/carrito" className="btn btn-danger btn-block fixed-link"><IconBack/>Carrito</Link>
-                            </div>
-                            <div className="col-6">
-                                <Link to="/busqueda" className="btn btn-success btn-block fixed-link"><IconBack/>Buscar</Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Fragment>
+        <FormField 
+            handleSubmit={handleSubmit} 
+            register={register} 
+            onSubmit={onSubmit} 
+            errors={errors} 
+            activo={activo}/>
     )
 }
 

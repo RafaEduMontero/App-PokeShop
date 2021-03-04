@@ -1,4 +1,5 @@
 import React from 'react';
+//Atomics
 import SpanCart from './span_cart';
 
 const IconCart = ({paquete}) =>{

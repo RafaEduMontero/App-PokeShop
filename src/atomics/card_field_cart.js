@@ -42,7 +42,11 @@ const CardFieldCart = ({pokemon,paquete}) =>{
                             <Link className="card1-footer btn btn-info p-2 pb-2" to={`/busqueda/detallebusqueda/${pokemon.id}`}><i className="fas fa-info-circle pb-1"></i></Link>
                         </div>
                         <div className="col-3">
-                            <ButtonSend label={<IconDeleteCart/>} onClick={() => mostrarAlert(nombre,pokemon.id,paquete)} className="btn btn-danger"/>
+                            <ButtonSend 
+                                label={<IconDeleteCart/>} 
+                                onClick={() => mostrarAlert(nombre,pokemon.id,paquete)} 
+                                className="btn btn-danger"
+                            />
                         </div>
                         <div className="col-3">
                             <Link className="btn btn-info" to="/busqueda"><IconBack/></Link>

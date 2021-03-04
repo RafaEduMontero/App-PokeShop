@@ -22,7 +22,10 @@ export default () => {
         async function fetchManyData(){
             let promises = [];
             for(let i=1;i<=200;i++){
-                promises.push(fetchData(pokemones.getTodos.concat(`${i}`)));
+                const data = fetchData(pokemones.getTodos.concat(`${i}`));
+                if(data){
+                    promises.push(data);
+                }
             }
             const data = await Promise.all(promises);
             setResults(data);

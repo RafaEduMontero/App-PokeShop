@@ -1,10 +1,15 @@
+//sweetAler
 import swal from 'sweetalert';
+//emailjs
+import * as emailjs from 'emailjs-com';
+
 let timeOutID;
+
 
 const funciones = {
     addPokemon: (id, paquete) => {
         const { cart, setCart, pokemons} = paquete;
-        const pokemon = pokemons.filter((pokemon) => pokemon.id === id)
+        const pokemon = pokemons.filter((pokemon) => pokemon?.id === id)
         setCart([...cart, ...pokemon]);
     },
     delPokemon: (id, paquete) => {
@@ -18,21 +23,12 @@ const funciones = {
     filtrado: (entrada, paquete) => {
         const { pokemons,setPokemonsFiltrados,setLoading } = paquete;
         setLoading(true);
-        // Al evento oninput del campo de búsqueda le asignamos esta función,
-        // que será llamada cada vez que se presione una tecla,
-        // y que filtra y muestra los usuarios que coinciden con la búsqueda, con un delay o debounce de 1seg.
-
-        // Cancelar la ejecución de la función declarada en el setTimeOut(),
-        // con el identificador guardado en la variable timeOutID.
         clearTimeout(timeOutID);
-
-        // Demorar la ejecución de la búsqueda con la función setTimeOut(),
-        // esta recibe dos parámetros, la función deberá ejecutar y el tiempo de espera en mili-segundos.
         
         timeOutID = setTimeout(() => {
             const pokemonsFiltrado = pokemons.filter((pokemon) => {
                 setLoading(false);
-                const resultado = pokemon.name.includes(entrada.entrada);
+                const resultado = pokemon?.name.includes(entrada.entrada);
                 return resultado
             })
             setPokemonsFiltrados(pokemonsFiltrado);
@@ -55,6 +51,28 @@ const funciones = {
                 })
             }
         })
+    },
+    enviarMail: (datos,setActivo,setDatos,history) =>{
+        emailjs.send('service_6sq906i','template_zyz2x9k', datos,'user_UruR9nFNkkkXSRvAD2kYZ')
+                .then(() => {
+                        swal({
+                            title: '¡PokéBola Enviada! :D',
+                            text: '¡¡Su Pokébola fué enviada a su mail. Gracias por elegirnos, Poke-Shop!!',
+                            icon: 'success',
+                            button: 'OK'
+                        }).then(respuesta =>{
+                            if(respuesta){
+                                history.push("/busqueda");
+                                setActivo(false);
+                            }
+                        })
+                        setDatos({
+                            email: '',
+                            username: ''
+                        });
+		}, (err) => {
+				   console.log("FAILED...", err);
+		});
     }
 }
 

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SpanField = ({contenido}) =>{
+const SpanField = ({contenido,className}) =>{
     return (
-        <span>{contenido}</span>
+        <span className={className}>{contenido}</span>
     )
 }
 

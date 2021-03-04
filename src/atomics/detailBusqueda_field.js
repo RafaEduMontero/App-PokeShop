@@ -1,4 +1,4 @@
-import React,{Fragment } from 'react';
+import React from 'react';
 //images
 import fondoHeader from '../images/bg-pattern-card.svg'
 //Atomics
@@ -29,9 +29,9 @@ const DetalleBusquedaField = ({pokemon,paquete}) =>{
         tipo: pokemon.types[0].type.name
     }
 
+    const pokemonEnCarrito = cart.find(poke =>poke.id === pokemon.id);
     const {imagen,name,habilidad,hp,tipo,defensa,especial,ataque} = datos;
     return(
-        <Fragment>
             <div className="col col-md-4 p-4">
                 <div className="card2">
                     <img src={fondoHeader} className="card1-header"/>
@@ -66,13 +66,16 @@ const DetalleBusquedaField = ({pokemon,paquete}) =>{
                             <Link className="btn btn-info" to="/busqueda"><IconBack/></Link>
                         </div>
                         <div className="col-6">
-                                {cart.find(poke =>poke.id === pokemon.id) && <ButtonSend label={<IconAddCart/>} onClick={() => addPokemon(pokemon.id,paquete)} className="btn btn-dark" disabled/>}
-                                {!(cart.find(poke =>poke.id === pokemon.id)) && <ButtonSend label={<IconAddCart/>} onClick={() => addPokemon(pokemon.id,paquete)} className="btn btn-success"/>}
+                            <ButtonSend 
+                                label={<IconAddCart/>} 
+                                onClick={() => addPokemon(pokemon.id,paquete)} 
+                                className={`btn ${pokemonEnCarrito ? 'btn-dark' : 'btn-success'}`} 
+                                disabled={pokemonEnCarrito}
+                            />
                         </div>
                     </div>
                 </div>
             </div>
-        </Fragment>
     )
 }
 

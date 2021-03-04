@@ -1,12 +1,11 @@
 import React from 'react';
 //react-router-dom
-import LinkTo from '../../atomics/linkto';
-//import Email from '../../smpt/smtp'
+import {Link} from 'react-router-dom';
 
 const Principal = () =>{
     return(
         <div className="container-fluid fondo">
-            <LinkTo className="btn btn-danger p-3 botonEntrar" label="ENTRAR" to="/busqueda"/>
+            <Link className="btn btn-danger p-3 botonEntrar" to="/busqueda">ENTRAR</Link>
         </div>
     )
 }

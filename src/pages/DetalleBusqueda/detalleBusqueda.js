@@ -7,14 +7,14 @@ import DetalleBusquedaField from '../../atomics/detailBusqueda_field';
 import IconCart from '../../atomics/iconCart';
 import Spinner from '../../atomics/spinner';
 //Hoooks
-import use_fetch from '../../hooks/use_fetch_byId';
+import use_fetchById from '../../hooks/use_fetch_byId';
 //Paths
 import pokemones from '../../paths/pokemones';
 
 
 const DetalleBusqueda = ({paquete}) =>{
     const {id} = useParams();
-    const [pokemon,validate] = use_fetch(pokemones.getTodos+`${id}`);
+    const [pokemon,validate] = use_fetchById(pokemones.getTodos+`${id}`);
     return(
         <Fragment>
             <div className="fondo2 container-fluid">
