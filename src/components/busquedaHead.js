@@ -23,7 +23,7 @@ const BusquedaHead = ({setEntrada,entrada,paquete}) =>{
                                 <TextField filtrado={() => filtrado(entrada,paquete)} handler={handler} name="entrada" className="form-control text-white bg-info" id="formulario"/>
                             </div>
                             <div className="ml-auto">
-                                <Link to="/carrito" className="btn btn-primary"><IconCart paquete={paquete}/></Link>
+                                <Link to="/carrito" className="btn btn-info"><IconCart paquete={paquete}/></Link>
                             </div>                                           
                     </div>
         </div>

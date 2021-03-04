@@ -16,7 +16,7 @@ const TextField = ({
                 name={name}
                 onChange={handler}
                 onKeyUp={filtrado}
-                placeholder="Buscar Pokémon por su nombre"
+                placeholder="Buscar Pokémon"
             />
         </Fragment>
     )

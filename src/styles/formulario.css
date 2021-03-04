@@ -1,6 +1,6 @@
 .main-section{
     margin:0 auto;
-    margin-top:25%;
+    margin-top:10%;
     padding: 0;
 }
 
@@ -43,10 +43,10 @@
 }
 
 .form-group#email-group::before{
-    content: "\f2bb";
+    content: "\f1d8";
 }
 
-button-form{
+.button-form{
     width: 60%;
     margin: 5px 0 25px;
 }

@@ -7,6 +7,7 @@ import form from '../images/pokebolas.jpg';
 //react-router
 import { Link } from 'react-router-dom';
 import SpanField from './span_field';
+import ImgField from './img_field';
 
 const FormField = ({handleSubmit,onSubmit,register,errors,activo}) =>{
     return(
@@ -14,10 +15,10 @@ const FormField = ({handleSubmit,onSubmit,register,errors,activo}) =>{
                 <div className="col-sm-8 main-section">
                     <div className="modal-content">
                         <div className="col-12 user-img">
-                            <img src={form} />
+                            <ImgField src={form}/>
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className="form-group">
+                            <div className="form-group" id="user-group">
                                 <InputHookForm
                                     type="text" 
                                     className="form-control" 
@@ -28,7 +29,7 @@ const FormField = ({handleSubmit,onSubmit,register,errors,activo}) =>{
                                 {errors.username && 
                                     <SpanField contenido="El nombre es requerido" className="text-warning"/>}
                             </div>
-                            <div className="form-group">
+                            <div className="form-group" id="email-group">
                                 <InputHookForm
                                     type="email" 
                                     className="form-control" 
@@ -44,7 +45,7 @@ const FormField = ({handleSubmit,onSubmit,register,errors,activo}) =>{
                                 disabled={activo}
                             />
                         </form>
-                        <div className="row p-5">
+                        <div className="row p-4">
                             <div className="col-6">
                                 <Link to="/carrito" className="btn btn-danger btn-block fixed-link"><IconBack/>Carrito</Link>
                             </div>
