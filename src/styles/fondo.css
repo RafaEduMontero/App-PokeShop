@@ -18,7 +18,6 @@
 .fondo2{
     width: 100%;
     min-height: 100vh;
-    background-image: url(../images/poke6.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -28,7 +27,6 @@
 .fondo3{
   width: 100%;
   min-height: 100vh;
-  background-image: url(../images/fondo7.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -159,10 +157,22 @@
     .fondo {
       background-image: url(../images/fondo.jpg);
     }
+    .fondo2{
+      background-image: url(../images/poke6.jpg);
+    }
+    .fondo3{
+      background-image: url(../images/pokebolas.jpg);
+    }
   }
 
   @media (min-width: 527px) {
     .fondo {
       background-image: url(../images/fondo6.jpg);
+    }
+    .fondo2{
+      background-image: url(../images/fondo8.jpg);
+    }
+    .fondo3{
+      background-image: url(../images/fondo7.jpg);
     }
   }
