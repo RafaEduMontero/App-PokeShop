@@ -8,17 +8,15 @@ import PField from './p_field';
 const CartVacio = () =>{
     const p = "Por favor regrese a la página de búsqueda para agregar pokémones a su pokebola :)";
     return(
-        <Fragment>
-            <div className="jumbotron bg-warning">
-                <div className="row bg-warning justify-content-center">
-                    <h1 className="display-4">La Pokebola está Vacía :(</h1>
-                    <hr className="my-4"/>
-                    <PField contenido={p}/>
-                    <Link className="btn btn-info mb-2" to="/busqueda"><IconBack/></Link>
+            <div className="row justify-content-center">
+                <div className="col-12">
+                    <div className="jumbotron bg-warning">
+                        <h1 className="display-4">La Pokebola está Vacía :(</h1>
+                        <PField contenido={p}/>
+                        <Link className="btn btn-info mb-2" to="/busqueda"><IconBack/></Link>
+                    </div>
                 </div>
-            </div>
-        </Fragment>
-        
+            </div>        
     )
 }
 

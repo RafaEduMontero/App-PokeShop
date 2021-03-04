@@ -2,14 +2,13 @@ import React,{Fragment} from 'react';
 
 const PokeNoEncontrado = () =>{
     return(
-        <Fragment>
-            <div className="jumbotron bg-warning">
-                <div className="row bg-warning justify-content-center">
-                    <h1 className="display-4">Pokémon no Encontrado :(</h1>
-                    <hr className="my-4"/>
+            <div className="row justify-content-center">
+                <div className="col-12">
+                    <div className="jumbotron bg-warning">
+                        <h1 className="display-4">Pokémon no encontrado :(</h1>
+                    </div>
                 </div>
             </div>
-        </Fragment>
     )
 }
 
