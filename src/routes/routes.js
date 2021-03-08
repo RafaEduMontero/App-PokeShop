@@ -1,8 +1,10 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 //React-Router
 import {
     BrowserRouter as Router,
-    Route
+    Route,
+    Redirect,
+    Switch
   } from "react-router-dom";
 //Pages
 import Busqueda from '../pages/Busqueda/busqueda';
@@ -36,12 +38,13 @@ const Routes = () =>{
 
     return(
         <Router>
+            <Switch>
             <Route exact path="/" component={Principal}/>
             <Route exact path="/busqueda">
                 <Busqueda paquete={paquete}/>
             </Route>
 
-            <Route exact path="/busqueda/detallebusqueda/:id">
+            <Route path="/busqueda/detallebusqueda/:id">
                 <DetalleBusqueda paquete={paquete}/>
             </Route>
 
@@ -52,6 +55,10 @@ const Routes = () =>{
             <Route exact path="/formulario">
                 <Formulario cart={cart}/>
             </Route>
+            <Route>
+                <Redirect to="/busqueda"/>
+            </Route>
+            </Switch>
         </Router>
     )
 }
