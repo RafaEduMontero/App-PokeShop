@@ -36,6 +36,19 @@ const Routes = () =>{
         loading,setLoading
     }
 
+    useEffect(() =>{
+        let data = localStorage.getItem('cart');
+        if(data !== null){
+            setCart(JSON.parse(data));
+        }else{
+            setCart([])
+        }
+    },[]);
+
+    useEffect(() =>{
+        localStorage.setItem('cart',JSON.stringify(cart))
+    },[cart])
+
     return(
         <Router>
             <Switch>
